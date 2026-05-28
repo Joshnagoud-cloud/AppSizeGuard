@@ -1,0 +1,6 @@
+is_production: true
+growth:
+  warn_percent: 5
+  error_percent: 15
+dependencies:
+  warn_size_mb: 10
