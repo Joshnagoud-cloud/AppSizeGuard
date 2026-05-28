@@ -6,6 +6,7 @@ let package = Package(
     platforms: [.macOS(.v13)],
     products: [
         .executable(name: "appsizeguard", targets: ["AppSizeGuard"]),
+        .plugin(name: "AppSizeGuardPlugin", targets: ["AppSizeGuardPlugin"]),
     ],
     dependencies: [
         .package(url: "https://github.com/jpsim/Yams.git", from: "5.1.0"),
@@ -20,6 +21,12 @@ let package = Package(
             name: "AppSizeGuard",
             dependencies: ["AppSizeGuardLib"],
             path: "Sources/AppSizeGuard"
+        ),
+        .plugin(
+            name: "AppSizeGuardPlugin",
+            capability: .buildTool(),
+            dependencies: ["AppSizeGuard"],
+            path: "Plugins/AppSizeGuardPlugin"
         ),
         .testTarget(
             name: "AppSizeGuardTests",
