@@ -5,34 +5,19 @@ let package = Package(
     name: "AppSizeGuard",
     platforms: [.macOS(.v13)],
     products: [
-        .executable(name: "appsizeguard", targets: ["AppSizeGuard"]),
         .plugin(name: "AppSizeGuardPlugin", targets: ["AppSizeGuardPlugin"]),
     ],
-    dependencies: [
-        .package(url: "https://github.com/jpsim/Yams.git", from: "5.1.0"),
-    ],
     targets: [
-        .target(
-            name: "AppSizeGuardLib",
-            dependencies: ["Yams"],
-            path: "Sources/AppSizeGuardLib"
-        ),
-        .executableTarget(
-            name: "AppSizeGuard",
-            dependencies: ["AppSizeGuardLib"],
-            path: "Sources/AppSizeGuard"
+        .binaryTarget(
+            name: "AppSizeGuardBinary",
+            url: "https://github.com/Joshnagoud-cloud/AppSizeGuard/releases/download/1.0.2/appsizeguard.artifactbundle.zip",
+            checksum: "555fa1f68f78d47718a9ab1c2f43607d8d88c08fe79654a1efbffbbd1c8f2f19"
         ),
         .plugin(
             name: "AppSizeGuardPlugin",
             capability: .buildTool(),
-            dependencies: ["AppSizeGuard"],
+            dependencies: ["AppSizeGuardBinary"],
             path: "Plugins/AppSizeGuardPlugin"
-        ),
-        .testTarget(
-            name: "AppSizeGuardTests",
-            dependencies: ["AppSizeGuardLib"],
-            path: "Tests/AppSizeGuardTests",
-            resources: [.process("Fixtures")]
         ),
     ]
 )
