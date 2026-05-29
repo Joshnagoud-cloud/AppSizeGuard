@@ -1,0 +1,18 @@
+{
+    "schemaVersion": "1.0",
+    "artifacts": {
+        "appsizeguard": {
+            "type": "executable",
+            "version": "1.0.2",
+            "variants": [
+                {
+                    "path": "appsizeguard-1.0.2-macosx/bin/appsizeguard",
+                    "supportedTriples": [
+                        "arm64-apple-macosx",
+                        "x86_64-apple-macosx"
+                    ]
+                }
+            ]
+        }
+    }
+}
